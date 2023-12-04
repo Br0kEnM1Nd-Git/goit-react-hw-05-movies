@@ -2,6 +2,7 @@ import api from 'api/api';
 import useRequest from 'hooks/useRequest';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ReviewsList } from './reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -33,14 +34,14 @@ const Reviews = () => {
         <p>{error}</p>
       ) : (
         reviews.length > 0 && (
-          <ul>
+          <ReviewsList>
             {reviews.map(({ id, author, content }) => (
               <li key={id}>
                 <p>Author: {author}</p>
                 <p>Comment: {content}</p>
               </li>
             ))}
-          </ul>
+          </ReviewsList>
         )
       )}
     </>

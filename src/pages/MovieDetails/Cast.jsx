@@ -2,6 +2,7 @@ import api from 'api/api';
 import useRequest from 'hooks/useRequest';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { CastList, CastListItem } from './cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -33,9 +34,9 @@ const Cast = () => {
         <p>{error}</p>
       ) : (
         cast.length > 0 && (
-          <ul>
+          <CastList>
             {cast.map(({ id, name, character, profile_path }) => (
-              <li key={id}>
+              <CastListItem key={id}>
                 <img
                   height={100}
                   width={100}
@@ -48,9 +49,9 @@ const Cast = () => {
                 />
                 <p>Name: {name}</p>
                 <p>Character: {character}</p>
-              </li>
+              </CastListItem>
             ))}
-          </ul>
+          </CastList>
         )
       )}
     </>

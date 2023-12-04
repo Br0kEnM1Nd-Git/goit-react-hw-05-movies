@@ -2,7 +2,13 @@ import api from 'api/api';
 import useRequest from 'hooks/useRequest';
 import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { BackLink, StyledLink } from 'styles/components.styled';
+import { BackLink, Container, StyledLink } from 'styles/components.styled';
+import {
+  AdditionalList,
+  GenresList,
+  InfoSection,
+  MovieDescription,
+} from './movie-details.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -34,15 +40,16 @@ const MovieDetails = () => {
   const { from } = state ?? {};
 
   return (
-    <div>
+    <Container>
       {from && <BackLink to={from}>{'<- Back'}</BackLink>}
+
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
         movie && (
-          <>
+          <InfoSection>
             <img
               height={500}
               weight={500}
@@ -53,28 +60,38 @@ const MovieDetails = () => {
               }
               alt={overview}
             />
-            <h2>{`${title} (${date})`}</h2>
-            <p>User score: {rating}%</p>
-            <h3>Overwiew</h3>
-            <p>{overview}</p>
-            <h3>Genres</h3>
-            <div>
-              {genres.map(({ id, name }) => (
-                <span key={id}>{name}</span>
-              ))}
-            </div>
-            <span>Additional information:</span>
-            <StyledLink to="cast" state={{ from }}>
-              Cast
-            </StyledLink>
-            <StyledLink to="reviews" state={{ from }}>
-              Reviews
-            </StyledLink>
-          </>
+            <MovieDescription>
+              <h2>{`${title} (${date})`}</h2>
+              <p>User score: {rating}%</p>
+              <h3>Overwiew</h3>
+              <p>{overview}</p>
+              <h3>Genres</h3>
+              <GenresList>
+                {genres.map(({ id, name }) => (
+                  <span key={id}>{name}</span>
+                ))}
+              </GenresList>
+            </MovieDescription>
+          </InfoSection>
         )
       )}
+
+      <span>Additional information:</span>
+      <AdditionalList>
+        <li>
+          <StyledLink to="cast" state={{ from }}>
+            Cast
+          </StyledLink>
+        </li>
+        <li>
+          <StyledLink to="reviews" state={{ from }}>
+            Reviews
+          </StyledLink>
+        </li>
+      </AdditionalList>
+
       <Outlet />
-    </div>
+    </Container>
   );
 };
 

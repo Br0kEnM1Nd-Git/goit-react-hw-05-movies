@@ -1,6 +1,7 @@
 import api from 'api/api';
 import { useEffect, useState } from 'react';
-import { StyledLink } from 'styles/components.styled';
+import { Container, StyledLink } from 'styles/components.styled';
+import { HomeTitle, TrendingList } from './home.styled';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,14 +24,14 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <h2>Trending today</h2>
+    <Container>
+      <HomeTitle>Trending today</HomeTitle>
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <ul>
+        <TrendingList>
           {movies.length > 0 &&
             movies.map(movie => {
               return (
@@ -41,9 +42,9 @@ const Home = () => {
                 </li>
               );
             })}
-        </ul>
+        </TrendingList>
       )}
-    </>
+    </Container>
   );
 };
 

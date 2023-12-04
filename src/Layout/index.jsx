@@ -1,15 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import { StyledNavLink } from 'styles/components.styled';
+import { AppWrapper } from 'styles/components.styled';
+import { NavPanel, PageLink } from './layout.styled';
 
 const Layout = () => {
   return (
-    <div>
-      <nav style={{ display: 'flex', gap: '20px' }}>
-        <StyledNavLink to={'/'}>Home</StyledNavLink>
-        <StyledNavLink to={'/movies'}>Movies</StyledNavLink>
-      </nav>
+    <AppWrapper>
+      <NavPanel>
+        <PageLink to={'/'}>Home</PageLink>
+        <PageLink to={'/movies'}>Movies</PageLink>
+      </NavPanel>
       <Outlet />
-    </div>
+    </AppWrapper>
   );
 };
 

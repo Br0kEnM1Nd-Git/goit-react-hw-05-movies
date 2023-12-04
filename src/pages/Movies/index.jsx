@@ -2,7 +2,14 @@ import api from 'api/api';
 import useRequest from 'hooks/useRequest';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { StyledLink } from 'styles/components.styled';
+import { Container, StyledLink } from 'styles/components.styled';
+import {
+  MoviePoster,
+  MovieSearch,
+  MovieTitle,
+  MoviesList,
+  MoviesListItem,
+} from './movies.styled';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -40,27 +47,26 @@ const Movies = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <Container>
+      <MovieSearch onSubmit={handleSubmit}>
         <input type="text" value={query} onChange={handleChange} />
         <button type="submit">Search</button>
-      </form>
+      </MovieSearch>
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
         movies.length > 0 && (
-          <ul>
+          <MoviesList>
             {movies.map(({ id, title, overview, poster_path }) => (
-              <li key={id}>
+              <MoviesListItem key={id}>
                 <StyledLink
                   to={`/movies/${id}`}
                   state={{ from: `/movies?${search}` }}
                 >
-                  {' '}
-                  {title}
-                  <img
+                  <MovieTitle>{title}</MovieTitle>
+                  <MoviePoster
                     height={100}
                     weight={100}
                     src={
@@ -71,12 +77,12 @@ const Movies = () => {
                     alt={overview}
                   />
                 </StyledLink>
-              </li>
+              </MoviesListItem>
             ))}
-          </ul>
+          </MoviesList>
         )
       )}
-    </div>
+    </Container>
   );
 };
 

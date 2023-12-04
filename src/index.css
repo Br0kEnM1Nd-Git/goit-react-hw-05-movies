@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  color: black;
+  color: #333333;
 }
 
 ul,
@@ -12,6 +12,7 @@ ol {
 }
 
 a {
+  color: #333333;
   text-decoration: none;
 }
 

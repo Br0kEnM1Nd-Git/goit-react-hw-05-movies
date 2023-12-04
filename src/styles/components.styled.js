@@ -2,10 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const AppWrapper = styled.div`
-  height: '100vh';
-  display: 'flex';
-  justify-content: 'center';
-  align-items: 'center';
+  height: 100vh;
 `;
 
 const StyledLink = styled(Link)`
@@ -23,4 +20,8 @@ const BackLink = styled(StyledLink)`
   display: block;
 `;
 
-export { AppWrapper, StyledLink, StyledNavLink, BackLink };
+const Container = styled.div`
+  padding: 20px;
+`;
+
+export { AppWrapper, StyledLink, StyledNavLink, BackLink, Container };
