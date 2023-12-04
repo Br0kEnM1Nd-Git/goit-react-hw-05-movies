@@ -10,7 +10,7 @@ const Reviews = lazy(() => import('pages/MovieDetails/Reviews'));
 
 export const App = () => {
   return (
-    <Suspense>
+    <Suspense fallback={<div>loading...</div>}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
