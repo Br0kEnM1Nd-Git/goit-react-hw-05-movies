@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/605.7c52dd1f.chunk.js","mappings":"2KAAA,MAIA,EAJgBA,KACPC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,W","sources":["pages/MovieDetails/Reviews.jsx"],"sourcesContent":["const Reviews = () => {\n  return <div>Reviews</div>;\n};\n\nexport default Reviews;\n"],"names":["Reviews","_jsx","children"],"sourceRoot":""}
