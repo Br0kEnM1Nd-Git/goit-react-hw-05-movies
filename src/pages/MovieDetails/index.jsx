@@ -64,8 +64,12 @@ const MovieDetails = () => {
               ))}
             </div>
             <span>Additional information:</span>
-            <StyledLink to="cast">Cast</StyledLink>
-            <StyledLink to="reviews">Reviews</StyledLink>
+            <StyledLink to="cast" state={{ from }}>
+              Cast
+            </StyledLink>
+            <StyledLink to="reviews" state={{ from }}>
+              Reviews
+            </StyledLink>
           </>
         )
       )}
