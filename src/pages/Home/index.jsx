@@ -35,7 +35,7 @@ const Home = () => {
             movies.map(movie => {
               return (
                 <li key={movie.id}>
-                  <StyledLink to={`/movies/${movie.id}`}>
+                  <StyledLink to={`/movies/${movie.id}`} state={{ from: '/' }}>
                     {movie.title}
                   </StyledLink>
                 </li>

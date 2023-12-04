@@ -19,4 +19,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export { AppWrapper, StyledLink, StyledNavLink };
+const BackLink = styled(StyledLink)`
+  display: block;
+`;
+
+export { AppWrapper, StyledLink, StyledNavLink, BackLink };

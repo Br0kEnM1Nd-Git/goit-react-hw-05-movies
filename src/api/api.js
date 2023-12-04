@@ -15,6 +15,21 @@ class Api {
     const { data } = await axios.get(`search/movie?${query}`);
     return data;
   }
+
+  async getMovieDetails(movieId) {
+    const { data } = await axios.get(`movie/${movieId}`);
+    return data;
+  }
+
+  async getMovieCast(movieId) {
+    const { data } = await axios.get(`movie/${movieId}/credits`);
+    return data;
+  }
+
+  async getMovieReviews(movieId) {
+    const { data } = await axios.get(`movie/${movieId}/reviews`);
+    return data;
+  }
 }
 
 const api = new Api();

@@ -18,7 +18,6 @@ const Movies = () => {
       const searchMovies = async () => {
         try {
           const { results: movies } = await api.searchMovies(searchParams);
-          console.log(movies);
           setMovies(movies);
         } catch ({ message }) {
           setError(message);
@@ -57,7 +56,7 @@ const Movies = () => {
               <li key={id}>
                 <StyledLink
                   to={`/movies/${id}`}
-                  state={{ from: `/movies${search}` }}
+                  state={{ from: `/movies?${search}` }}
                 >
                   {' '}
                   {title}
