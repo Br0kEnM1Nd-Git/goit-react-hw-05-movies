@@ -18,7 +18,6 @@ const MoviesSearch = ({ movies, search }) => {
             <MovieTitle>{title}</MovieTitle>
             <MoviePoster
               height={100}
-              weight={100}
               src={
                 poster_path
                   ? `https://image.tmdb.org/t/p/w500/${poster_path}`

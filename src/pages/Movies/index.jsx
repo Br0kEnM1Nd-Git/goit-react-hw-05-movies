@@ -7,7 +7,6 @@ import SearchForm from 'components/MoviesSearch/SearchForm';
 import MoviesSearch from 'components/MoviesSearch';
 
 const Movies = () => {
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const { isLoading, setIsLoading, error, setError } = useRequest();
   const [search, setSearch] = useSearchParams();
@@ -31,23 +30,13 @@ const Movies = () => {
     }
   }, [search, setError, setIsLoading]);
 
-  const handleChange = ({ target: { value } }) => {
-    setQuery(value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSearch = query => {
     if (query) setSearch(`query=${query}`);
-    setQuery('');
   };
 
   return (
     <Container>
-      <SearchForm
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        query={query}
-      />
+      <SearchForm handleSearch={handleSearch} />
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
