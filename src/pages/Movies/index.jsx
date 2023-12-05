@@ -2,14 +2,9 @@ import api from 'api/api';
 import useRequest from 'hooks/useRequest';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Container, StyledLink } from 'styles/components.styled';
-import {
-  MoviePoster,
-  MovieSearch,
-  MovieTitle,
-  MoviesList,
-  MoviesListItem,
-} from './movies.styled';
+import { Container } from 'styles/components.styled';
+import SearchForm from 'components/MoviesSearch/SearchForm';
+import MoviesSearch from 'components/MoviesSearch';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -48,39 +43,17 @@ const Movies = () => {
 
   return (
     <Container>
-      <MovieSearch onSubmit={handleSubmit}>
-        <input type="text" value={query} onChange={handleChange} />
-        <button type="submit">Search</button>
-      </MovieSearch>
+      <SearchForm
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        query={query}
+      />
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
-        movies.length > 0 && (
-          <MoviesList>
-            {movies.map(({ id, title, overview, poster_path }) => (
-              <MoviesListItem key={id}>
-                <StyledLink
-                  to={`/movies/${id}`}
-                  state={{ from: `/movies?${search}` }}
-                >
-                  <MovieTitle>{title}</MovieTitle>
-                  <MoviePoster
-                    height={100}
-                    weight={100}
-                    src={
-                      poster_path
-                        ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-                        : 'https://i.imgur.com/jtwlswk.png'
-                    }
-                    alt={overview}
-                  />
-                </StyledLink>
-              </MoviesListItem>
-            ))}
-          </MoviesList>
-        )
+        movies.length > 0 && <MoviesSearch movies={movies} search={search} />
       )}
     </Container>
   );

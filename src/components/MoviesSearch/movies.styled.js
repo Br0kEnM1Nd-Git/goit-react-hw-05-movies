@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MovieSearch = styled.form`
+const MoviesSearchForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,4 +39,4 @@ const MoviePoster = styled.img`
   width: 250px;
 `;
 
-export { MovieSearch, MoviesList, MoviesListItem, MoviePoster, MovieTitle };
+export { MoviesSearchForm, MoviesList, MoviesListItem, MoviePoster, MovieTitle };

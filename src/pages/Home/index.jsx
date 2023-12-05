@@ -1,7 +1,7 @@
 import api from 'api/api';
 import { useEffect, useState } from 'react';
-import { Container, StyledLink } from 'styles/components.styled';
-import { HomeTitle, TrendingList } from './home.styled';
+import { Container } from 'styles/components.styled';
+import Trending from 'components/Trending';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -25,24 +25,12 @@ const Home = () => {
 
   return (
     <Container>
-      <HomeTitle>Trending today</HomeTitle>
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <TrendingList>
-          {movies.length > 0 &&
-            movies.map(movie => {
-              return (
-                <li key={movie.id}>
-                  <StyledLink to={`/movies/${movie.id}`} state={{ from: '/' }}>
-                    {movie.title}
-                  </StyledLink>
-                </li>
-              );
-            })}
-        </TrendingList>
+        <Trending movies={movies} />
       )}
     </Container>
   );
